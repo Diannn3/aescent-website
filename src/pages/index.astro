@@ -1,0 +1,289 @@
+---
+import { Image } from 'astro:assets';
+import HeroScene from '../components/HeroScene.astro';
+import ProjectEstimator from '../components/ProjectEstimator.astro';
+import Layout from '../layouts/Layout.astro';
+import lagunaSmilesPreview from '../assets/laguna-smiles-preview.jpg';
+
+const capabilities = [
+  ['01', 'Strategy & Structure', 'Positioning, conversion architecture, and content hierarchy before visual decoration.'],
+  ['02', 'Editorial Art Direction', 'A distinct visual system built from your actual business, audience, and market context.'],
+  ['03', 'Astro Development', 'Fast, resilient, responsive implementation without unnecessary application complexity.'],
+  ['04', 'Launch & Stewardship', 'Deployment, domain guidance, quality assurance, and focused post-launch support.'],
+];
+
+const process = [
+  ['01', 'Discover', 'We establish the commercial problem, decision criteria, audience, and boundaries before touching layout.'],
+  ['02', 'Direct', 'We turn the brief into a disciplined visual language and conversion-led page architecture.'],
+  ['03', 'Deliver', 'We build, test, refine, and launch a site designed to feel considered on every screen.'],
+];
+---
+
+<Layout
+  title="Aescent Web Studio | Deliberate Digital Craftsmanship"
+  description="Aescent Web Studio creates premium, conversion-focused websites for ambitious local service businesses in the Philippines."
+>
+  <main id="main-content">
+    <section id="top" class="hero" data-hero aria-labelledby="hero-title">
+      <div class="hero-sticky">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow" data-reveal>Aescent Web Studio / Laguna</span>
+            <h1 id="hero-title">
+              <span class="reveal-line" data-reveal-line><span>Digital</span></span>
+              <span class="reveal-line" data-reveal-line><span>craftsmanship,</span></span>
+              <span class="reveal-line serif-line" data-reveal-line><span>deliberately built.</span></span>
+            </h1>
+            <div class="hero-note" data-reveal>
+              <span>Independent design<br />&amp; development studio</span>
+              <p>Architectural web experiences for local businesses that refuse to look interchangeable.</p>
+            </div>
+          </div>
+          <div class="hero-object" data-reveal>
+            <HeroScene />
+          </div>
+        </div>
+        <div class="hero-footer" aria-hidden="true">
+          <span>Strategy</span><i></i><span>Art Direction</span><i></i><span>Development</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="philosophy" class="manifesto section-shell" aria-labelledby="manifesto-title">
+      <div class="manifesto-index" data-manifesto-index>
+        <span>01</span><i></i><span>Philosophy</span>
+      </div>
+      <div class="manifesto-content">
+        <span class="eyebrow" data-reveal>The Anti-Vibecode Manifesto</span>
+        <h2 id="manifesto-title" data-reveal>
+          The web has enough<br /><em>decoration.</em>
+        </h2>
+        <p class="manifesto-statement" data-reveal data-parallax="5">
+          We build digital places with structure, restraint, and a reason for every decision.
+        </p>
+        <div class="manifesto-body" data-reveal>
+          <p>Generic templates make every business sound and feel the same. Aescent begins somewhere else: with the trust your customer needs, the action your business needs, and the visual character only your brand can own.</p>
+          <p>Our work is architectural. We organize information before decorating it, prioritize mobile behavior before desktop spectacle, and use motion only when it strengthens the story.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="work" class="work section-shell" aria-labelledby="work-title">
+      <header class="section-heading" data-reveal>
+        <span class="eyebrow">02 / Selected Work</span>
+        <h2 id="work-title">One system.<br /><em>Every detail considered.</em></h2>
+      </header>
+
+      <article class="case-study" data-reveal>
+        <div class="case-meta">
+          <span class="case-number">01</span>
+          <div><span>Concept Study / Dental</span><h3>Laguna Smiles</h3></div>
+          <p>A trust-first digital concept for a premium dental practice in Calamba, structured around patient confidence, clear services, and an effortless path to inquiry.</p>
+        </div>
+        <div class="case-stage" data-work-visual>
+          <div class="case-card" data-tilt-card>
+            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>laguna-smiles.local</span></div>
+            <div class="case-image-wrap">
+              <Image
+                src={lagunaSmilesPreview}
+                alt="Laguna Smiles premium dental website concept"
+                width={1200}
+                height={630}
+                quality={88}
+                loading="lazy"
+                data-work-image
+              />
+            </div>
+          </div>
+          <span class="stage-note stage-note-left">Responsive Concept</span>
+          <span class="stage-note stage-note-right">Astro / Art Direction</span>
+        </div>
+        <footer class="case-footer">
+          <dl><div><dt>Focus</dt><dd>Trust &amp; Conversion</dd></div><div><dt>Market</dt><dd>Calamba, Laguna</dd></div><div><dt>Format</dt><dd>One-page Experience</dd></div></dl>
+        </footer>
+      </article>
+    </section>
+
+    <section class="capabilities" aria-labelledby="capabilities-title">
+      <div class="marquee" aria-hidden="true">
+        <div>Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i> Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i></div>
+      </div>
+      <div class="capabilities-inner section-shell">
+        <header data-reveal>
+          <span class="eyebrow">03 / Capabilities</span>
+          <h2 id="capabilities-title">From first principle<br />to <em>final pixel.</em></h2>
+        </header>
+        <div class="capability-list">
+          {capabilities.map(([number, title, copy]) => (
+            <article data-reveal>
+              <span>{number}</span><h3>{title}</h3><p>{copy}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process section-shell" aria-labelledby="process-title">
+      <div class="process-heading">
+        <span class="eyebrow">04 / Process</span>
+        <h2 id="process-title">A clear path to<br /><em>something distinct.</em></h2>
+        <p>No mystery process. No endless revision cycle. Each stage resolves a specific decision before the next begins.</p>
+      </div>
+      <div class="process-steps">
+        {process.map(([number, title, copy]) => (
+          <article data-reveal>
+            <span>{number}</span>
+            <h3>{title}</h3>
+            <p>{copy}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <ProjectEstimator />
+
+    <section id="contact" class="closing" aria-labelledby="closing-title">
+      <div class="closing-orbit" aria-hidden="true"><i></i></div>
+      <span class="eyebrow" data-reveal>06 / Begin</span>
+      <h2 id="closing-title" data-reveal>Build something<br /><em>worth remembering.</em></h2>
+      <p data-reveal>If your business is ready for a more deliberate digital presence, start with the estimator or send the studio a direct brief.</p>
+      <a href="#estimator" data-reveal>Estimate Your Project <span aria-hidden="true">↓</span></a>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .section-shell { width: min(100% - (var(--page-pad) * 2), var(--max-width)); margin-inline: auto; }
+  .eyebrow { display: block; color: var(--gold); font-size: .62rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+  h2, h3, p { text-wrap: pretty; }
+
+  .hero { position: relative; height: 170svh; border-bottom: 1px solid var(--line); }
+  .hero-sticky { position: sticky; top: 0; height: 100svh; padding: clamp(6.5rem, 12vh, 9rem) var(--page-pad) 2rem; display: flex; flex-direction: column; overflow: hidden; }
+  .hero-grid { width: min(100%, var(--max-width)); height: 100%; margin-inline: auto; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(25rem, .92fr); gap: clamp(2rem, 5vw, 6rem); align-items: center; }
+  .hero-copy { position: relative; z-index: 2; }
+  .hero-copy h1 { margin: 2rem 0 3rem; font: 500 clamp(4.4rem, 7.7vw, 9rem)/.78 'Inter', sans-serif; letter-spacing: -.075em; }
+  .reveal-line { display: block; overflow: hidden; padding: .08em .08em .08em 0; }
+  .reveal-line > span { display: block; transform-origin: left bottom; }
+  .hero-copy .serif-line { padding-bottom: .18em; font-family: 'Instrument Serif', serif; font-weight: 400; font-style: italic; letter-spacing: -.045em; }
+  .hero-note { max-width: 42rem; display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+  .hero-note span { color: var(--faint); font-size: .6rem; line-height: 1.6; letter-spacing: .12em; text-transform: uppercase; }
+  .hero-note p { margin: 0; color: var(--muted); font-size: clamp(.85rem, 1.1vw, 1rem); line-height: 1.75; }
+  .hero-object { height: min(68vh, 43rem); }
+  .hero-footer { width: min(100%, var(--max-width)); margin: 1rem auto 0; display: flex; align-items: center; gap: 1.25rem; color: var(--faint); font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; }
+  .hero-footer i { height: 1px; flex: 1; background: var(--line); }
+
+  .manifesto { position: relative; padding: 12rem 0 14rem; display: grid; grid-template-columns: 1fr 3fr; gap: 4rem; }
+  .manifesto-index { position: sticky; top: 8rem; height: 8rem; display: flex; align-items: flex-start; gap: .75rem; color: var(--faint); font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; }
+  .manifesto-index span:first-child { color: var(--gold); font: italic 1rem 'Instrument Serif', serif; }
+  .manifesto-index i { width: 3rem; height: 1px; margin-top: .45rem; background: var(--line); }
+  .manifesto-content > h2 { max-width: 11ch; margin: 2rem 0 9rem; font: 400 clamp(4.4rem, 8.5vw, 9.5rem)/.82 'Instrument Serif', serif; letter-spacing: -.05em; }
+  .manifesto-content > h2 em { color: var(--muted); font-weight: 400; }
+  .manifesto-statement { max-width: 17ch; margin: 0 0 8rem auto; font: 400 clamp(3.3rem, 6vw, 6.6rem)/.95 'Instrument Serif', serif; letter-spacing: -.035em; }
+  .manifesto-body { max-width: 48rem; margin-left: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .manifesto-body p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.8; }
+
+  .work { padding: 10rem 0 13rem; }
+  .section-heading { margin-bottom: 7rem; display: grid; grid-template-columns: 1fr 2.4fr; gap: 2rem; }
+  .section-heading h2 { grid-column: 2; max-width: 12ch; margin: 0; font: 400 clamp(4.2rem, 8vw, 8.5rem)/.84 'Instrument Serif', serif; letter-spacing: -.05em; }
+  .section-heading h2 em { color: var(--muted); font-weight: 400; }
+  .case-study { border-top: 1px solid var(--line); }
+  .case-meta { padding: 2.5rem 0; display: grid; grid-template-columns: .35fr 1.2fr 1fr; gap: 2rem; align-items: start; }
+  .case-number { color: var(--gold); font: italic 1.4rem 'Instrument Serif', serif; }
+  .case-meta div > span { color: var(--muted); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; }
+  .case-meta h3 { margin: .65rem 0 0; font: 400 clamp(3rem, 5vw, 5.6rem)/.9 'Instrument Serif', serif; }
+  .case-meta > p { max-width: 33rem; margin: 0; color: var(--muted); font-size: .85rem; line-height: 1.75; }
+  .case-stage { position: relative; min-height: clamp(31rem, 65vw, 57rem); padding: clamp(3rem, 8vw, 8rem); display: grid; place-items: center; overflow: hidden; background-color: #e8e5dc; background-image: linear-gradient(rgb(10 10 10 / 5%) 1px, transparent 1px), linear-gradient(90deg, rgb(10 10 10 / 5%) 1px, transparent 1px); background-size: 2rem 2rem; perspective: 1400px; }
+  .case-card { width: min(100%, 68rem); overflow: hidden; background: #10100f; box-shadow: 0 3rem 8rem rgb(10 10 10 / 30%); transform-style: preserve-3d; transform-origin: center; will-change: transform; }
+  .browser-bar { height: 2.5rem; padding: 0 1rem; display: flex; align-items: center; gap: .45rem; border-bottom: 1px solid #292927; color: #686660; font-size: .55rem; letter-spacing: .12em; }
+  .browser-bar i { width: .38rem; height: .38rem; border-radius: 50%; background: #34332f; }
+  .browser-bar span { margin-left: auto; }
+  .case-image-wrap { aspect-ratio: 1200 / 630; overflow: hidden; }
+  .case-image-wrap :global(img) { width: 100%; height: 112%; object-fit: cover; will-change: transform; }
+  .stage-note { position: absolute; color: #69665d; font-size: .55rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+  .stage-note-left { bottom: 2rem; left: 2rem; }
+  .stage-note-right { top: 2rem; right: 2rem; }
+  .case-footer { padding: 2rem 0; border-bottom: 1px solid var(--line); }
+  .case-footer dl { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
+  .case-footer dl > div { display: grid; gap: .45rem; }
+  .case-footer dt { color: var(--faint); font-size: .55rem; letter-spacing: .13em; text-transform: uppercase; }
+  .case-footer dd { margin: 0; font-size: .75rem; }
+
+  .capabilities { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #0d0d0c; }
+  .marquee { width: max-content; padding: 1.5rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font: italic 2rem 'Instrument Serif', serif; white-space: nowrap; }
+  .marquee div { animation: marquee 26s linear infinite; }
+  .marquee i { margin: 0 1.5rem; color: var(--gold); font-size: .8rem; font-style: normal; }
+  @keyframes marquee { to { transform: translateX(-50%); } }
+  .capabilities-inner { padding: 10rem 0; display: grid; grid-template-columns: 1fr 1.65fr; gap: 7rem; }
+  .capabilities-inner header { position: sticky; top: 8rem; align-self: start; }
+  .capabilities-inner h2 { margin: 2rem 0 0; font: 400 clamp(3.7rem, 6vw, 6.8rem)/.88 'Instrument Serif', serif; letter-spacing: -.04em; }
+  .capabilities-inner h2 em { color: var(--muted); font-weight: 400; }
+  .capability-list { border-top: 1px solid var(--line); }
+  .capability-list article { min-height: 10rem; padding: 2rem 0; display: grid; grid-template-columns: .25fr 1fr 1fr; gap: 1.5rem; align-items: start; border-bottom: 1px solid var(--line); }
+  .capability-list article > span { color: var(--gold); font: italic 1rem 'Instrument Serif', serif; }
+  .capability-list h3 { margin: 0; font: 400 1.8rem 'Instrument Serif', serif; }
+  .capability-list p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.65; }
+
+  .process { padding: 13rem 0; display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(4rem, 9vw, 10rem); }
+  .process-heading { position: sticky; top: 8rem; align-self: start; }
+  .process-heading h2 { margin: 2rem 0; font: 400 clamp(4rem, 6.8vw, 7.5rem)/.85 'Instrument Serif', serif; letter-spacing: -.045em; }
+  .process-heading h2 em { color: var(--muted); font-weight: 400; }
+  .process-heading > p { max-width: 29rem; color: var(--muted); font-size: .85rem; line-height: 1.75; }
+  .process-steps { border-top: 1px solid var(--line); }
+  .process-steps article { min-height: 19rem; padding: 3rem 0; display: grid; grid-template-columns: .25fr 1fr; gap: 2rem; align-content: start; border-bottom: 1px solid var(--line); }
+  .process-steps article > span { color: var(--gold); font: italic 1.2rem 'Instrument Serif', serif; }
+  .process-steps h3 { margin: 0; font: 400 clamp(3.8rem, 6vw, 6rem)/.9 'Instrument Serif', serif; }
+  .process-steps p { grid-column: 2; max-width: 32rem; margin: 2rem 0 0; color: var(--muted); font-size: .85rem; line-height: 1.75; }
+
+  .closing { position: relative; min-height: 100svh; padding: 9rem var(--page-pad); display: flex; align-items: center; justify-content: center; flex-direction: column; overflow: hidden; border-top: 1px solid var(--line); text-align: center; }
+  .closing h2 { position: relative; z-index: 2; margin: 2rem 0; font: 400 clamp(4.6rem, 10vw, 11rem)/.8 'Instrument Serif', serif; letter-spacing: -.055em; }
+  .closing h2 em { color: var(--gold); font-weight: 400; }
+  .closing > p { position: relative; z-index: 2; max-width: 38rem; margin: 0 0 3rem; color: var(--muted); line-height: 1.75; }
+  .closing > a { position: relative; z-index: 2; min-height: 3.5rem; padding: 0 1.4rem; display: inline-flex; align-items: center; gap: 3rem; border: 1px solid var(--gold); font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; transition: color 180ms ease, background-color 180ms ease; }
+  .closing > a:hover { color: var(--ink); background: var(--gold); }
+  .closing-orbit { position: absolute; width: min(62vw, 56rem); aspect-ratio: 1; border: 1px solid #27251f; border-radius: 50%; }
+  .closing-orbit::before, .closing-orbit::after { content: ''; position: absolute; inset: 15%; border: 1px solid #1e1d1a; border-radius: 50%; }
+  .closing-orbit::after { inset: 35%; }
+  .closing-orbit i { position: absolute; top: 50%; left: 50%; width: .8rem; height: .8rem; background: var(--gold); transform: translate(-50%, -50%) rotate(45deg); }
+
+  @media (max-width: 64rem) {
+    .hero-grid { grid-template-columns: 1fr .8fr; }
+    .hero-copy h1 { font-size: clamp(4rem, 8vw, 6.3rem); }
+    .manifesto { grid-template-columns: .5fr 2.5fr; }
+    .capabilities-inner, .process { gap: 4rem; }
+  }
+
+  @media (max-width: 48rem) {
+    .hero { height: auto; min-height: 100svh; }
+    .hero-sticky { position: relative; height: auto; min-height: 100svh; padding-top: 7rem; overflow: visible; }
+    .hero-grid { display: flex; flex-direction: column; align-items: stretch; }
+    .hero-copy h1 { margin-bottom: 2rem; font-size: clamp(4rem, 18vw, 6rem); }
+    .hero-note { grid-template-columns: 1fr; }
+    .hero-note > span { display: none; }
+    .hero-object { height: 27rem; }
+    .hero-footer { margin-top: 2rem; }
+    .hero-footer span:nth-of-type(2), .hero-footer span:nth-of-type(3), .hero-footer i:nth-of-type(2) { display: none; }
+    .manifesto { padding: 8rem 0; display: block; }
+    .manifesto-index { position: relative; top: auto; height: auto; margin-bottom: 4rem; }
+    .manifesto-content > h2 { margin-bottom: 6rem; font-size: clamp(4rem, 18vw, 6rem); }
+    .manifesto-statement { margin-bottom: 5rem; font-size: clamp(3rem, 13vw, 4.5rem); }
+    .manifesto-body { grid-template-columns: 1fr; gap: 2rem; }
+    .work { padding: 8rem 0; }
+    .section-heading { display: block; margin-bottom: 4rem; }
+    .section-heading h2 { margin-top: 2rem; font-size: clamp(3.8rem, 16vw, 5.5rem); }
+    .case-meta { grid-template-columns: .2fr 1fr; }
+    .case-meta > p { grid-column: 2; }
+    .case-stage { min-height: 25rem; padding: 2rem 1rem; }
+    .stage-note { display: none; }
+    .case-footer dl { grid-template-columns: 1fr; gap: 1.5rem; }
+    .capabilities-inner, .process { padding: 8rem 0; display: block; }
+    .capabilities-inner header, .process-heading { position: relative; top: auto; margin-bottom: 5rem; }
+    .capability-list article { grid-template-columns: .2fr 1fr; }
+    .capability-list p { grid-column: 2; }
+    .process-steps article { min-height: 16rem; }
+    .closing { min-height: 48rem; padding-inline: 1.25rem; }
+    .closing h2 { font-size: clamp(4.2rem, 20vw, 6.2rem); }
+    .closing-orbit { width: 120vw; }
+  }
+
+  @media (prefers-reduced-motion: reduce) { .marquee div { animation: none; } }
+</style>

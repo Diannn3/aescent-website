@@ -1,0 +1,186 @@
+<section id="estimator" class="estimator" aria-labelledby="estimator-title">
+  <div class="estimator-heading" data-reveal>
+    <span class="section-index">05 / Project Estimator</span>
+    <h2 id="estimator-title">Define the scope.<br /><em>See the investment.</em></h2>
+    <p>Configure an initial direction. The range is a planning guide, not a formal quotation.</p>
+  </div>
+
+  <form class="estimator-form" data-estimator>
+    <div class="controls">
+      <label class="range-field" for="sections">
+        <span><b>01</b> Sections</span>
+        <output data-output="sections" for="sections">6 sections</output>
+        <input id="sections" name="sections" type="range" min="4" max="8" step="1" value="6" />
+        <i><span>4</span><span>8</span></i>
+      </label>
+
+      <label class="range-field" for="depth">
+        <span><b>02</b> Visual Depth</span>
+        <output data-output="depth" for="depth">Editorial</output>
+        <input id="depth" name="depth" type="range" min="1" max="3" step="1" value="2" />
+        <i><span>Essential</span><span>Immersive</span></i>
+      </label>
+
+      <label class="range-field" for="features">
+        <span><b>03</b> Functionality</span>
+        <output data-output="features" for="features">Conversion</output>
+        <input id="features" name="features" type="range" min="1" max="3" step="1" value="2" />
+        <i><span>Essentials</span><span>Integrated</span></i>
+      </label>
+
+      <label class="range-field" for="budget">
+        <span><b>04</b> Available Investment</span>
+        <output data-output="budget" for="budget">PHP 20,000</output>
+        <input id="budget" name="budget" type="range" min="5" max="50" step="1" value="20" />
+        <i><span>PHP 5K</span><span>PHP 50K</span></i>
+      </label>
+    </div>
+
+    <aside class="estimate-panel" aria-live="polite" aria-atomic="true">
+      <span class="estimate-label">Indicative Investment</span>
+      <output class="estimate-value" data-estimate>PHP 18,000–20,500</output>
+      <div class="fit-status" data-fit="aligned">
+        <i aria-hidden="true"></i>
+        <div><strong data-fit-title>Aligned</strong><p data-fit-copy>Your available investment supports this direction.</p></div>
+      </div>
+      <dl>
+        <div><dt>Delivery</dt><dd>4–6 weeks</dd></div>
+        <div><dt>Payment</dt><dd>50% to begin</dd></div>
+      </dl>
+      <a class="estimate-cta" data-email-brief href="mailto:dian.aescentweb@gmail.com?subject=Aescent%20Project%20Inquiry">Email This Brief <span aria-hidden="true">↗</span></a>
+      <small>Final pricing follows discovery and a written scope of work.</small>
+    </aside>
+  </form>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('[data-estimator]');
+
+  if (form) {
+    const ranges = [...form.querySelectorAll<HTMLInputElement>('input[type="range"]')];
+    const depthLabels = ['Essential', 'Editorial', 'Immersive'];
+    const featureLabels = ['Essentials', 'Conversion', 'Integrated'];
+    const additions = [0, 3000, 7000];
+    const currency = new Intl.NumberFormat('en-PH', { style: 'currency', currency: 'PHP', maximumFractionDigits: 0 });
+    const params = new URLSearchParams(window.location.search);
+
+    const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+    const round500 = (value: number) => Math.round(value / 500) * 500;
+    const format = (value: number) => currency.format(value).replace('₱', 'PHP ');
+
+    ranges.forEach((range) => {
+      const saved = Number(params.get(range.name));
+      if (Number.isFinite(saved) && params.has(range.name)) {
+        range.value = String(clamp(saved, Number(range.min), Number(range.max)));
+      }
+    });
+
+    const update = () => {
+      const sections = Number(form.elements.namedItem('sections') instanceof HTMLInputElement && form.elements.namedItem('sections').value);
+      const depth = Number(form.elements.namedItem('depth') instanceof HTMLInputElement && form.elements.namedItem('depth').value);
+      const features = Number(form.elements.namedItem('features') instanceof HTMLInputElement && form.elements.namedItem('features').value);
+      const budget = Number(form.elements.namedItem('budget') instanceof HTMLInputElement && form.elements.namedItem('budget').value);
+
+      const lower = round500(10000 + Math.max(0, sections - 4) * 1000 + additions[depth - 1] + additions[features - 1]);
+      const upper = lower + round500(Math.max(2500, lower * 0.15));
+      const estimate = `${format(lower)}–${format(upper).replace('PHP ', '')}`;
+
+      form.querySelector<HTMLOutputElement>('[data-output="sections"]')!.value = `${sections} sections`;
+      form.querySelector<HTMLOutputElement>('[data-output="depth"]')!.value = depthLabels[depth - 1];
+      form.querySelector<HTMLOutputElement>('[data-output="features"]')!.value = featureLabels[features - 1];
+      form.querySelector<HTMLOutputElement>('[data-output="budget"]')!.value = format(budget * 1000);
+      form.querySelector<HTMLOutputElement>('[data-estimate]')!.value = estimate;
+
+      let fit = 'aligned';
+      let title = 'Aligned';
+      let copy = 'Your available investment supports this direction.';
+      if (budget < 10) {
+        fit = 'below';
+        title = 'Below Studio Minimum';
+        copy = 'A standard Aescent engagement begins at PHP 10,000.';
+      } else if (budget * 1000 < lower) {
+        fit = 'adjust';
+        title = 'Scope Adjustment';
+        copy = 'The direction is viable with fewer sections or reduced complexity.';
+      }
+
+      const fitElement = form.querySelector<HTMLElement>('.fit-status')!;
+      fitElement.dataset.fit = fit;
+      form.querySelector<HTMLElement>('[data-fit-title]')!.textContent = title;
+      form.querySelector<HTMLElement>('[data-fit-copy]')!.textContent = copy;
+
+      const nextParams = new URLSearchParams(window.location.search);
+      ranges.forEach((range) => {
+        nextParams.set(range.name, range.value);
+        const progress = (Number(range.value) - Number(range.min)) / (Number(range.max) - Number(range.min));
+        range.style.setProperty('--range-progress', `${progress * 100}%`);
+      });
+      history.replaceState(
+        {},
+        '',
+        `${window.location.pathname}?${nextParams.toString()}${window.location.hash}`,
+      );
+
+      const body = [
+        'Hello Aescent Web Studio,', '',
+        'I used the project estimator and would like to discuss this direction:', '',
+        `Sections: ${sections}`,
+        `Visual depth: ${depthLabels[depth - 1]}`,
+        `Functionality: ${featureLabels[features - 1]}`,
+        `Available investment: ${format(budget * 1000)}`,
+        `Indicative range: ${estimate}`,
+        `Fit: ${title}`, '',
+        'Business name:',
+        'Primary goal:', '',
+        'Thank you.',
+      ].join('\n');
+      const subject = `Aescent project brief — ${estimate}`;
+      form.querySelector<HTMLAnchorElement>('[data-email-brief]')!.href = `mailto:dian.aescentweb@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    };
+
+    ranges.forEach((range) => range.addEventListener('input', update));
+    update();
+  }
+</script>
+
+<style>
+  .estimator { width: min(100% - (var(--page-pad) * 2), var(--max-width)); margin: 0 auto; padding: 10rem 0; scroll-margin-top: 5rem; }
+  .estimator-heading { margin-bottom: 5rem; display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
+  .section-index { color: var(--gold); font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; }
+  h2 { grid-column: 2; max-width: 11ch; margin: 0; font: 400 clamp(4rem, 8vw, 8rem)/.84 'Instrument Serif', serif; letter-spacing: -.045em; }
+  h2 em { color: var(--muted); font-weight: 400; }
+  .estimator-heading > p { grid-column: 2; max-width: 36rem; margin: 1rem 0 0; color: var(--muted); line-height: 1.7; }
+  .estimator-form { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(20rem, .75fr); gap: clamp(3rem, 8vw, 9rem); }
+  .controls { border-top: 1px solid var(--line); }
+  .range-field { padding: 2.25rem 0; display: grid; grid-template-columns: 1fr auto; gap: 1.2rem; border-bottom: 1px solid var(--line); cursor: pointer; }
+  .range-field > span { font-size: .8rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
+  .range-field b { margin-right: 1rem; color: var(--gold); font: italic 1rem 'Instrument Serif', serif; }
+  output { color: var(--paper); font: 400 1.5rem 'Instrument Serif', serif; }
+  input[type='range'] { --range-progress: 50%; grid-column: 1 / -1; width: 100%; height: 2rem; margin: .5rem 0 0; appearance: none; background: transparent; cursor: grab; }
+  input[type='range']:active { cursor: grabbing; }
+  input[type='range']::-webkit-slider-runnable-track { height: 2px; background: linear-gradient(90deg, var(--gold) var(--range-progress), #353430 var(--range-progress)); }
+  input[type='range']::-webkit-slider-thumb { width: 1.1rem; height: 1.1rem; margin-top: -.5rem; appearance: none; border: 3px solid var(--ink); border-radius: 0; background: var(--gold); box-shadow: 0 0 0 1px var(--gold); transform: rotate(45deg); }
+  input[type='range']::-moz-range-track { height: 2px; background: #353430; }
+  input[type='range']::-moz-range-progress { height: 2px; background: var(--gold); }
+  input[type='range']::-moz-range-thumb { width: .8rem; height: .8rem; border: 3px solid var(--ink); border-radius: 0; background: var(--gold); transform: rotate(45deg); }
+  .range-field > i { grid-column: 1 / -1; display: flex; justify-content: space-between; color: var(--faint); font-size: .58rem; font-style: normal; letter-spacing: .1em; text-transform: uppercase; }
+  .estimate-panel { position: sticky; top: 7rem; align-self: start; padding: clamp(2rem, 4vw, 3.5rem); border: 1px solid #3a3525; background: #11100d; }
+  .estimate-panel::before { content: ''; position: absolute; top: -1px; right: -1px; width: 5rem; height: 5rem; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+  .estimate-label { color: var(--gold); font-size: .6rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
+  .estimate-value { margin: 1.5rem 0 2rem; display: block; font-size: clamp(2.6rem, 4vw, 4.4rem); line-height: .95; letter-spacing: -.035em; }
+  .fit-status { padding: 1.25rem 0; display: flex; gap: 1rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .fit-status > i { width: .55rem; height: .55rem; margin-top: .25rem; flex: none; background: var(--gold); transform: rotate(45deg); }
+  .fit-status[data-fit='adjust'] > i { background: var(--muted); }
+  .fit-status[data-fit='below'] > i { border: 1px solid var(--paper); background: transparent; }
+  .fit-status strong { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; }
+  .fit-status p { margin: .35rem 0 0; color: var(--muted); font-size: .72rem; line-height: 1.55; }
+  dl { margin: 2rem 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  dl > div { display: grid; gap: .35rem; }
+  dt { color: var(--faint); font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; }
+  dd { margin: 0; font-size: .75rem; }
+  .estimate-cta { min-height: 3.25rem; padding: 0 1.1rem; display: flex; align-items: center; justify-content: space-between; color: var(--ink); background: var(--gold); font-size: .67rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; transition: background-color 180ms ease; }
+  .estimate-cta:hover { background: var(--paper); }
+  small { margin-top: 1rem; display: block; color: var(--faint); font-size: .6rem; line-height: 1.5; }
+  @media (max-width: 56rem) { .estimator-heading { grid-template-columns: 1fr; } h2, .estimator-heading > p { grid-column: 1; } .estimator-form { grid-template-columns: 1fr; } .estimate-panel { position: relative; top: auto; } }
+  @media (max-width: 36rem) { .estimator { padding: 7rem 0; } .range-field { grid-template-columns: 1fr; } .range-field output { justify-self: start; } h2 { font-size: clamp(3.7rem, 18vw, 5.5rem); } }
+</style>
