@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import ChapterRail from '../components/ChapterRail.astro';
 import HeroScene from '../components/HeroScene.astro';
 import ProjectEstimator from '../components/ProjectEstimator.astro';
 import Layout from '../layouts/Layout.astro';
@@ -86,8 +87,8 @@ const process = [
               <Image
                 src={lagunaSmilesPreview}
                 alt="Laguna Smiles premium dental website concept"
-                width={1024}
-                height={537}
+                width={1841}
+                height={923}
                 quality={90}
                 loading="lazy"
                 data-work-image
@@ -122,10 +123,13 @@ const process = [
         </article>
       </section>
 
-      <section class="capabilities" aria-labelledby="capabilities-title">
-        <div class="marquee" aria-hidden="true">
-          <div>Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i> Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i></div>
-        </div>
+	<section id="capabilities" class="capabilities" aria-labelledby="capabilities-title">
+		<div class="marquee" aria-hidden="true">
+			<div class="marquee-track">
+				<span>Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i></span>
+				<span>Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i></span>
+			</div>
+		</div>
         <div class="capabilities-inner section-shell">
           <header data-reveal>
             <span class="eyebrow">03 / Capabilities</span>
@@ -193,6 +197,7 @@ const process = [
       </footer>
     </div>
   </main>
+  <ChapterRail />
 </Layout>
 
 <style>
@@ -216,7 +221,7 @@ const process = [
   .hero-footer { position: relative; z-index: 2; width: min(100%, var(--max-width)); margin: 1rem auto 0; display: flex; align-items: center; gap: 1.25rem; color: var(--faint); font-size: .55rem; letter-spacing: .15em; text-transform: uppercase; }
   .hero-footer i { height: 1px; flex: 1; background: var(--line); }
 
-  .manifesto { position: relative; padding: 12rem 0 14rem; display: grid; grid-template-columns: 1fr 3fr; gap: 4rem; }
+  .manifesto { position: relative; padding: 10rem 0 6rem; display: grid; grid-template-columns: 1fr 3fr; gap: 4rem; }
   .manifesto-index { position: sticky; top: 8rem; height: 8rem; display: flex; align-items: flex-start; gap: .75rem; color: var(--faint); font-size: .62rem; letter-spacing: .15em; text-transform: uppercase; }
   .manifesto-index span:first-child { color: var(--gold); font: 500 1rem var(--font-display); }
   .manifesto-index i { width: 3rem; height: 1px; margin-top: .45rem; background: var(--line); }
@@ -226,19 +231,19 @@ const process = [
   .manifesto-body { max-width: 48rem; margin-left: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
   .manifesto-body p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.8; }
 
-  .work { padding: 10rem 0 13rem; }
+  .work { padding: 6rem 0 8rem; }
   .section-heading { margin-bottom: 7rem; display: grid; grid-template-columns: 1fr 2.4fr; gap: 2rem; }
   .section-heading h2 { grid-column: 2; max-width: 12ch; margin: 0; font: 400 clamp(4.2rem, 8vw, 8.5rem)/.84 var(--font-display); letter-spacing: -.065em; }
   .section-heading h2 em { color: var(--muted); font-weight: 400; }
   .case-study { border-top: 1px solid var(--line); }
-  .case-monolith { border: 1px solid var(--line); border-bottom: 0; background: #000; overflow: hidden; margin-top: 2rem; }
-  .case-window { aspect-ratio: 16 / 9; overflow: hidden; }
-  .case-window :global(img) { width: 100%; height: 112%; object-fit: cover; will-change: transform; }
+  .case-monolith { width: min(100%, 72rem); margin: 2rem auto 0; border: 1px solid var(--line); border-bottom: 0; background: #000; overflow: hidden; }
+  .case-window { aspect-ratio: 1841 / 923; overflow: hidden; }
+  .case-window :global(img) { width: 100%; height: 100%; object-fit: contain; }
   .browser-bar { height: 2.5rem; padding: 0 1rem; display: flex; align-items: center; gap: .45rem; border-bottom: 1px solid #292927; color: #686660; font-size: .55rem; letter-spacing: .12em; background: #000; }
   .browser-bar i { width: .38rem; height: .38rem; border-radius: 50%; background: #34332f; }
   .browser-bar span { margin-left: auto; }
 
-  .blueprint-ledger { display: grid; grid-template-columns: 1fr 1.5fr 1fr 1fr; border: 1px solid var(--line); background: transparent; }
+  .blueprint-ledger { width: min(100%, 72rem); margin-inline: auto; display: grid; grid-template-columns: 1fr 1.5fr 1fr 1fr; border: 1px solid var(--line); background: transparent; }
   .blueprint-col { padding: 2.5rem 2rem; border-right: 1px solid var(--line); display: flex; flex-direction: column; }
   .blueprint-col:last-child { border-right: 0; }
   
@@ -285,9 +290,10 @@ const process = [
   }
 
   .capabilities { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: transparent; }
-  .marquee { width: max-content; padding: 1.5rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font: 400 2rem var(--font-display); letter-spacing: -.03em; white-space: nowrap; }
-  .marquee div { animation: marquee 26s linear infinite; }
-  .marquee i { margin: 0 1.5rem; color: var(--gold); font-size: .8rem; font-style: normal; }
+	.marquee { width: 100%; overflow: hidden; padding: 1.5rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font: 400 2rem var(--font-display); letter-spacing: -.03em; white-space: nowrap; }
+	.marquee-track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
+	.marquee-track span { display: inline-flex; align-items: center; flex: none; padding-right: 3rem; }
+	.marquee i { margin: 0 1.5rem; color: var(--gold); font-size: .8rem; font-style: normal; }
   @keyframes marquee { to { transform: translateX(-50%); } }
   .capabilities-inner { padding: 10rem 0; display: grid; grid-template-columns: 1fr 1.65fr; gap: 7rem; }
   .capabilities-inner header { position: sticky; top: 8rem; align-self: start; }
@@ -299,7 +305,7 @@ const process = [
   .capability-list h3 { margin: 0; font: 500 1.8rem var(--font-display); letter-spacing: -.035em; }
   .capability-list p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.65; }
 
-  .process { padding: 13rem 0; display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(4rem, 9vw, 10rem); }
+  .process { padding: 8rem 0 5rem; display: grid; grid-template-columns: 1fr 1.4fr; gap: clamp(4rem, 9vw, 10rem); }
   .process-heading { position: sticky; top: 8rem; align-self: start; }
   .process-heading h2 { margin: 2rem 0; font: 400 clamp(4rem, 6.8vw, 7.5rem)/.85 var(--font-display); letter-spacing: -.065em; }
   .process-heading h2 em { color: var(--muted); font-weight: 400; }

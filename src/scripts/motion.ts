@@ -80,13 +80,6 @@ export function initMotion() {
         scrollTrigger: { trigger: '#philosophy', start: 'top 70%', end: 'bottom 30%', scrub: 1 },
       });
 
-      gsap.to('[data-work-image]', {
-        yPercent: 10,
-        scale: 1.04,
-        ease: 'none',
-        scrollTrigger: { trigger: '[data-work-visual]', start: 'top bottom', end: 'bottom top', scrub: 0.8 },
-      });
-
       const card = document.querySelector<HTMLElement>('[data-tilt-card]');
       if (card) {
         const rotateX = gsap.quickTo(card, 'rotationX', { duration: 0.45, ease: 'power3.out' });
