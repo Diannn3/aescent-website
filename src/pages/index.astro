@@ -49,120 +49,126 @@ const process = [
       </div>
     </section>
 
-    <section id="philosophy" class="manifesto section-shell" aria-labelledby="manifesto-title">
-      <div class="manifesto-index" data-manifesto-index>
-        <span>01</span><i></i><span>Philosophy</span>
-      </div>
-      <div class="manifesto-content">
-        <span class="eyebrow" data-reveal>The Anti-Vibecode Manifesto</span>
-        <h2 id="manifesto-title" data-reveal>
-          The web has enough<br /><em>decoration.</em>
-        </h2>
-        <p class="manifesto-statement" data-reveal data-parallax="5">
-          We build digital places with structure, restraint, and a reason for every decision.
-        </p>
-        <div class="manifesto-body" data-reveal>
-          <p>Generic templates make every business sound and feel the same. Aescent begins somewhere else: with the trust your customer needs, the action your business needs, and the visual character only your brand can own.</p>
-          <p>Our work is architectural. We organize information before decorating it, prioritize mobile behavior before desktop spectacle, and use motion only when it strengthens the story.</p>
+    <div class="atmospheric-wrapper" data-atmospheric-wrapper>
+      <div class="atmospheric-grain" aria-hidden="true"></div>
+      <div class="atmospheric-grid" aria-hidden="true"></div>
+      <div class="atmospheric-glow" aria-hidden="true"></div>
+      
+      <section id="philosophy" class="manifesto section-shell" aria-labelledby="manifesto-title">
+        <div class="manifesto-index" data-manifesto-index>
+          <span>01</span><i></i><span>Philosophy</span>
         </div>
-      </div>
-    </section>
-
-    <section id="work" class="work section-shell" aria-labelledby="work-title">
-      <header class="section-heading" data-reveal>
-        <span class="eyebrow">02 / Selected Work</span>
-        <h2 id="work-title">One system.<br /><em>Every detail considered.</em></h2>
-      </header>
-
-      <article class="case-study" data-reveal>
-        <div class="case-meta">
-          <span class="case-number">01</span>
-          <div><span>Concept Study / Dental</span><h3>Laguna Smiles</h3></div>
-          <p>A trust-first digital concept for a premium dental practice in Calamba, structured around patient confidence, clear services, and an effortless path to inquiry.</p>
-        </div>
-        <div class="case-triptych" data-work-visual>
-          <div class="case-panel case-panel-primary" data-triptych-panel data-tilt-card>
-            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>laguna-smiles.local</span></div>
-            <div class="case-image-wrap case-image-desktop">
-              <Image
-                src={lagunaSmilesPreview}
-                alt="Laguna Smiles premium dental website concept"
-                width={1200}
-                height={630}
-                quality={88}
-                loading="lazy"
-                data-work-image
-              />
-            </div>
+        <div class="manifesto-content">
+          <span class="eyebrow" data-reveal>The Anti-Vibecode Manifesto</span>
+          <h2 id="manifesto-title" data-reveal>
+            The web has enough<br /><em>decoration.</em>
+          </h2>
+          <p class="manifesto-statement" data-reveal data-parallax="5">
+            We build digital places with structure, restraint, and a reason for every decision.
+          </p>
+          <div class="manifesto-body" data-reveal>
+            <p>Generic templates make every business sound and feel the same. Aescent begins somewhere else: with the trust your customer needs, the action your business needs, and the visual character only your brand can own.</p>
+            <p>Our work is architectural. We organize information before decorating it, prioritize mobile behavior before desktop spectacle, and use motion only when it strengthens the story.</p>
           </div>
-          <div class="case-panel case-panel-detail" data-triptych-panel data-reveal>
-            <span class="panel-kicker">02 / Responsive Detail</span>
-            <div class="case-image-wrap case-image-mobile">
-              <Image
-                src={lagunaSmilesPreview}
-                alt="Cropped responsive detail from the Laguna Smiles concept"
-                width={1200}
-                height={630}
-                quality={82}
-                loading="lazy"
-              />
-            </div>
-          </div>
-          <aside class="case-ledger" data-triptych-panel data-reveal aria-label="Laguna Smiles design architecture">
-            <span class="panel-kicker">03 / Architecture Ledger</span>
-            <h4>Trust before treatment.</h4>
-            <p>The concept reduces clinical anxiety through calm hierarchy, direct service language, and an immediate path to inquiry.</p>
-            <dl>
-              <div><dt>Positioning</dt><dd>Premium, approachable care</dd></div>
-              <div><dt>Trust hierarchy</dt><dd>Practice → services → inquiry</dd></div>
-              <div><dt>Conversion path</dt><dd>One primary patient action</dd></div>
-              <div><dt>Visual system</dt><dd>Editorial serif / clinical neutral</dd></div>
-            </dl>
-          </aside>
         </div>
-        <footer class="case-footer">
-          <dl><div><dt>Focus</dt><dd>Trust &amp; Conversion</dd></div><div><dt>Market</dt><dd>Calamba, Laguna</dd></div><div><dt>Format</dt><dd>One-page Experience</dd></div></dl>
-        </footer>
-      </article>
-    </section>
+      </section>
 
-    <section class="capabilities" aria-labelledby="capabilities-title">
-      <div class="marquee" aria-hidden="true">
-        <div>Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i> Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i></div>
-      </div>
-      <div class="capabilities-inner section-shell">
-        <header data-reveal>
-          <span class="eyebrow">03 / Capabilities</span>
-          <h2 id="capabilities-title">From first principle<br />to <em>final pixel.</em></h2>
+      <section id="work" class="work section-shell" aria-labelledby="work-title">
+        <header class="section-heading" data-reveal>
+          <span class="eyebrow">02 / Selected Work</span>
+          <h2 id="work-title">One system.<br /><em>Every detail considered.</em></h2>
         </header>
-        <div class="capability-list">
-          {capabilities.map(([number, title, copy]) => (
+
+        <article class="case-study" data-reveal>
+          <div class="case-meta">
+            <span class="case-number">01</span>
+            <div><span>Concept Study / Dental</span><h3>Laguna Smiles</h3></div>
+            <p>A trust-first digital concept for a premium dental practice in Calamba, structured around patient confidence, clear services, and an effortless path to inquiry.</p>
+          </div>
+          <div class="case-triptych" data-work-visual>
+            <div class="case-panel case-panel-primary" data-triptych-panel data-tilt-card>
+              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>laguna-smiles.local</span></div>
+              <div class="case-image-wrap case-image-desktop">
+                <Image
+                  src={lagunaSmilesPreview}
+                  alt="Laguna Smiles premium dental website concept"
+                  width={1200}
+                  height={630}
+                  quality={88}
+                  loading="lazy"
+                  data-work-image
+                />
+              </div>
+            </div>
+            <div class="case-panel case-panel-detail" data-triptych-panel data-reveal>
+              <span class="panel-kicker">02 / Responsive Detail</span>
+              <div class="case-image-wrap case-image-mobile">
+                <Image
+                  src={lagunaSmilesPreview}
+                  alt="Cropped responsive detail from the Laguna Smiles concept"
+                  width={1200}
+                  height={630}
+                  quality={82}
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <aside class="case-ledger" data-triptych-panel data-reveal aria-label="Laguna Smiles design architecture">
+              <span class="panel-kicker">03 / Architecture Ledger</span>
+              <h4>Trust before treatment.</h4>
+              <p>The concept reduces clinical anxiety through calm hierarchy, direct service language, and an immediate path to inquiry.</p>
+              <dl>
+                <div><dt>Positioning</dt><dd>Premium, approachable care</dd></div>
+                <div><dt>Trust hierarchy</dt><dd>Practice → services → inquiry</dd></div>
+                <div><dt>Conversion path</dt><dd>One primary patient action</dd></div>
+                <div><dt>Visual system</dt><dd>Editorial serif / clinical neutral</dd></div>
+              </dl>
+            </aside>
+          </div>
+          <footer class="case-footer">
+            <dl><div><dt>Focus</dt><dd>Trust &amp; Conversion</dd></div><div><dt>Market</dt><dd>Calamba, Laguna</dd></div><div><dt>Format</dt><dd>One-page Experience</dd></div></dl>
+          </footer>
+        </article>
+      </section>
+
+      <section class="capabilities" aria-labelledby="capabilities-title">
+        <div class="marquee" aria-hidden="true">
+          <div>Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i> Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i></div>
+        </div>
+        <div class="capabilities-inner section-shell">
+          <header data-reveal>
+            <span class="eyebrow">03 / Capabilities</span>
+            <h2 id="capabilities-title">From first principle<br />to <em>final pixel.</em></h2>
+          </header>
+          <div class="capability-list">
+            {capabilities.map(([number, title, copy]) => (
+              <article data-reveal>
+                <span>{number}</span><h3>{title}</h3><p>{copy}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="process" class="process section-shell" aria-labelledby="process-title">
+        <div class="process-heading">
+          <span class="eyebrow">04 / Process</span>
+          <h2 id="process-title">A clear path to<br /><em>something distinct.</em></h2>
+          <p>No mystery process. No endless revision cycle. Each stage resolves a specific decision before the next begins.</p>
+        </div>
+        <div class="process-steps">
+          {process.map(([number, title, copy]) => (
             <article data-reveal>
-              <span>{number}</span><h3>{title}</h3><p>{copy}</p>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
             </article>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="process" class="process section-shell" aria-labelledby="process-title">
-      <div class="process-heading">
-        <span class="eyebrow">04 / Process</span>
-        <h2 id="process-title">A clear path to<br /><em>something distinct.</em></h2>
-        <p>No mystery process. No endless revision cycle. Each stage resolves a specific decision before the next begins.</p>
-      </div>
-      <div class="process-steps">
-        {process.map(([number, title, copy]) => (
-          <article data-reveal>
-            <span>{number}</span>
-            <h3>{title}</h3>
-            <p>{copy}</p>
-          </article>
-        ))}
-      </div>
-    </section>
-
-    <ProjectEstimator />
+      <ProjectEstimator />
+    </div>
 
     <section id="contact" class="closing" aria-labelledby="closing-title">
       <div class="closing-orbit" aria-hidden="true"><i></i></div>
@@ -242,7 +248,27 @@ const process = [
   .case-footer dt { color: var(--faint); font-size: .55rem; letter-spacing: .13em; text-transform: uppercase; }
   .case-footer dd { margin: 0; font-size: .75rem; }
 
-  .capabilities { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #0d0d0c; }
+  .atmospheric-wrapper { position: relative; width: 100%; overflow: visible; }
+  .atmospheric-wrapper > section { position: relative; z-index: 1; }
+  
+  .atmospheric-grain { position: absolute; z-index: 0; inset: 0; pointer-events: none; opacity: 0.18; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180' width='180' height='180'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.72' numOctaves='3' stitchTiles='stitch' /%3E%3CfeColorMatrix type='matrix' values='1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 0.3 0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' /%3E%3C/svg%3E"); background-repeat: repeat; }
+  .atmospheric-grid { position: absolute; z-index: 0; inset: 0; pointer-events: none; opacity: 0.03; background-image: linear-gradient(rgb(255 255 255) 1px, transparent 1px), linear-gradient(90deg, rgb(255 255 255) 1px, transparent 1px); background-size: 3rem 3rem; background-attachment: fixed; }
+  .atmospheric-glow { position: absolute; z-index: 0; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0; background: radial-gradient(34rem circle at var(--x, 50%) var(--y, 50%), rgb(212 175 55 / 8%), transparent); transition: opacity 400ms ease; will-change: opacity; }
+  .atmospheric-wrapper.is-tracking .atmospheric-glow { opacity: 1; }
+  
+  @media (hover: none) {
+    .atmospheric-grid { background-attachment: scroll; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .atmospheric-wrapper.is-tracking .atmospheric-glow { opacity: 0 !important; }
+  }
+  @media (pointer: fine) {
+    .atmospheric-wrapper { cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23d4af37' stroke-width='1'%3E%3Cpath d='M12 4v16M4 12h16'/%3E%3C/svg%3E") 12 12, crosshair; }
+    .atmospheric-wrapper a, .atmospheric-wrapper button, .atmospheric-wrapper input, .atmospheric-wrapper [role="button"], .atmospheric-wrapper .custom-range { cursor: auto; }
+    .atmospheric-wrapper a:hover, .atmospheric-wrapper button:hover, .atmospheric-wrapper input[type="submit"]:hover { cursor: pointer; }
+  }
+
+  .capabilities { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgb(13 13 12 / 82%); }
   .marquee { width: max-content; padding: 1.5rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font: 400 2rem var(--font-display); letter-spacing: -.03em; white-space: nowrap; }
   .marquee div { animation: marquee 26s linear infinite; }
   .marquee i { margin: 0 1.5rem; color: var(--gold); font-size: .8rem; font-style: normal; }

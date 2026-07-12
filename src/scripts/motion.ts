@@ -104,6 +104,51 @@ export function initMotion() {
           card.removeEventListener('pointerleave', onLeave);
         });
       }
+      const atmosphericWrapper = document.querySelector<HTMLElement>('[data-atmospheric-wrapper]');
+      if (atmosphericWrapper) {
+        let isHovering = false;
+        let pendingUpdate = false;
+        let lastX = 0;
+        let lastY = 0;
+
+        const updateGlow = () => {
+          if (!pendingUpdate || !isHovering) return;
+          pendingUpdate = false;
+          const rect = atmosphericWrapper.getBoundingClientRect();
+          atmosphericWrapper.style.setProperty('--x', `${lastX - rect.left}px`);
+          atmosphericWrapper.style.setProperty('--y', `${lastY - rect.top}px`);
+        };
+
+        const onPointerMove = (e: PointerEvent) => {
+          lastX = e.clientX;
+          lastY = e.clientY;
+          if (!pendingUpdate) {
+            pendingUpdate = true;
+            requestAnimationFrame(updateGlow);
+          }
+        };
+
+        const onPointerEnter = () => {
+          isHovering = true;
+          atmosphericWrapper.classList.add('is-tracking');
+        };
+
+        const onPointerLeave = () => {
+          isHovering = false;
+          pendingUpdate = false;
+          atmosphericWrapper.classList.remove('is-tracking');
+        };
+
+        atmosphericWrapper.addEventListener('pointerenter', onPointerEnter);
+        atmosphericWrapper.addEventListener('pointermove', onPointerMove);
+        atmosphericWrapper.addEventListener('pointerleave', onPointerLeave);
+
+        cleanups.push(() => {
+          atmosphericWrapper.removeEventListener('pointerenter', onPointerEnter);
+          atmosphericWrapper.removeEventListener('pointermove', onPointerMove);
+          atmosphericWrapper.removeEventListener('pointerleave', onPointerLeave);
+        });
+      }
     }
   });
 
