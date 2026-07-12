@@ -80,54 +80,45 @@ const process = [
         </header>
 
         <article class="case-study" data-reveal>
-          <div class="case-meta">
-            <span class="case-number">01</span>
-            <div><span>Concept Study / Dental</span><h3>Laguna Smiles</h3></div>
-            <p>A trust-first digital concept for a premium dental practice in Calamba, structured around patient confidence, clear services, and an effortless path to inquiry.</p>
+          <div class="case-monolith" data-work-visual>
+            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>laguna-smiles.local</span></div>
+            <div class="case-window">
+              <Image
+                src={lagunaSmilesPreview}
+                alt="Laguna Smiles premium dental website concept"
+                width={1200}
+                height={630}
+                quality={88}
+                loading="lazy"
+                data-work-image
+              />
+            </div>
           </div>
-          <div class="case-triptych" data-work-visual>
-            <div class="case-panel case-panel-primary" data-triptych-panel data-tilt-card>
-              <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>laguna-smiles.local</span></div>
-              <div class="case-image-wrap case-image-desktop">
-                <Image
-                  src={lagunaSmilesPreview}
-                  alt="Laguna Smiles premium dental website concept"
-                  width={1200}
-                  height={630}
-                  quality={88}
-                  loading="lazy"
-                  data-work-image
-                />
-              </div>
+          
+          <div class="blueprint-ledger">
+            <div class="blueprint-col blueprint-title">
+              <span class="blueprint-label">01 / Concept Study / Dental</span>
+              <h3>Laguna Smiles</h3>
             </div>
-            <div class="case-panel case-panel-detail" data-triptych-panel data-reveal>
-              <span class="panel-kicker">02 / Responsive Detail</span>
-              <div class="case-image-wrap case-image-mobile">
-                <Image
-                  src={lagunaSmilesPreview}
-                  alt="Cropped responsive detail from the Laguna Smiles concept"
-                  width={1200}
-                  height={630}
-                  quality={82}
-                  loading="lazy"
-                />
-              </div>
-            </div>
-            <aside class="case-ledger" data-triptych-panel data-reveal aria-label="Laguna Smiles design architecture">
-              <span class="panel-kicker">03 / Architecture Ledger</span>
+            <div class="blueprint-col blueprint-narrative">
               <h4>Trust before treatment.</h4>
-              <p>The concept reduces clinical anxiety through calm hierarchy, direct service language, and an immediate path to inquiry.</p>
+              <p>A trust-first digital concept for a premium dental practice in Calamba, structured around patient confidence, clear services, and an effortless path to inquiry.</p>
+            </div>
+            <div class="blueprint-col">
               <dl>
-                <div><dt>Positioning</dt><dd>Premium, approachable care</dd></div>
-                <div><dt>Trust hierarchy</dt><dd>Practice → services → inquiry</dd></div>
-                <div><dt>Conversion path</dt><dd>One primary patient action</dd></div>
-                <div><dt>Visual system</dt><dd>Editorial serif / clinical neutral</dd></div>
+                <div><dt>Focus</dt><dd>Trust &amp; Conversion</dd></div>
+                <div><dt>Market</dt><dd>Calamba, Laguna</dd></div>
+                <div><dt>Format</dt><dd>One-page Experience</dd></div>
               </dl>
-            </aside>
+            </div>
+            <div class="blueprint-col">
+              <dl>
+                <div><dt>Positioning</dt><dd>Premium, approachable</dd></div>
+                <div><dt>Hierarchy</dt><dd>Practice → services → inquiry</dd></div>
+                <div><dt>Visuals</dt><dd>Editorial serif / clinical neutral</dd></div>
+              </dl>
+            </div>
           </div>
-          <footer class="case-footer">
-            <dl><div><dt>Focus</dt><dd>Trust &amp; Conversion</dd></div><div><dt>Market</dt><dd>Calamba, Laguna</dd></div><div><dt>Format</dt><dd>One-page Experience</dd></div></dl>
-          </footer>
         </article>
       </section>
 
@@ -240,37 +231,38 @@ const process = [
   .section-heading h2 { grid-column: 2; max-width: 12ch; margin: 0; font: 400 clamp(4.2rem, 8vw, 8.5rem)/.84 var(--font-display); letter-spacing: -.065em; }
   .section-heading h2 em { color: var(--muted); font-weight: 400; }
   .case-study { border-top: 1px solid var(--line); }
-  .case-meta { padding: 2.5rem 0; display: grid; grid-template-columns: .35fr 1.2fr 1fr; gap: 2rem; align-items: start; }
-  .case-number { color: var(--gold); font: 500 1.4rem var(--font-display); }
-  .case-meta div > span { color: var(--muted); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; }
-  .case-meta h3 { margin: .65rem 0 0; font: 400 clamp(3rem, 5vw, 5.6rem)/.9 var(--font-display); letter-spacing: -.055em; }
-  .case-meta > p { max-width: 33rem; margin: 0; color: var(--muted); font-size: .85rem; line-height: 1.75; }
-  .case-triptych { position: relative; min-height: clamp(56rem, 90vw, 78rem); padding: clamp(2rem, 5vw, 5rem); display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(15rem, .65fr); grid-template-rows: 1fr auto; gap: clamp(1rem, 2vw, 2rem); overflow: hidden; background-color: #e8e5dc; background-image: linear-gradient(rgb(10 10 10 / 5%) 1px, transparent 1px), linear-gradient(90deg, rgb(10 10 10 / 5%) 1px, transparent 1px); background-size: 2rem 2rem; perspective: 1400px; }
-  .case-panel { overflow: hidden; background: #10100f; box-shadow: 0 2rem 6rem rgb(10 10 10 / 20%); }
-  .case-panel-primary { grid-row: 1 / 3; align-self: center; transform-origin: center; will-change: transform; min-width: 0; }
-  .case-panel-detail { position: relative; min-height: 27rem; align-self: stretch; display: flex; flex-direction: column; min-width: 0; }
-  .browser-bar { height: 2.5rem; padding: 0 1rem; display: flex; align-items: center; gap: .45rem; border-bottom: 1px solid #292927; color: #686660; font-size: .55rem; letter-spacing: .12em; }
+  .case-monolith { border: 1px solid var(--line); border-bottom: 0; background: #000; overflow: hidden; margin-top: 2rem; }
+  .case-window { aspect-ratio: 16 / 9; overflow: hidden; }
+  .case-window :global(img) { width: 100%; height: 112%; object-fit: cover; will-change: transform; }
+  .browser-bar { height: 2.5rem; padding: 0 1rem; display: flex; align-items: center; gap: .45rem; border-bottom: 1px solid #292927; color: #686660; font-size: .55rem; letter-spacing: .12em; background: #000; }
   .browser-bar i { width: .38rem; height: .38rem; border-radius: 50%; background: #34332f; }
   .browser-bar span { margin-left: auto; }
-  .case-image-wrap { overflow: hidden; }
-  .case-image-desktop { aspect-ratio: 1200 / 630; }
-  .case-image-wrap :global(img) { width: 100%; height: 112%; object-fit: cover; will-change: transform; }
-  .case-image-mobile { flex: 1; overflow: hidden; min-height: 0; }
-  .case-image-mobile :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: 64% center; transform: scale(1.72); will-change: transform; }
-  .panel-kicker { position: absolute; z-index: 2; top: 1.25rem; left: 1.25rem; color: #b3afa4; font-size: .52rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
-  .case-ledger { position: relative; padding: clamp(2rem, 3vw, 3.25rem); display: flex; flex-direction: column; justify-content: flex-end; color: #171714; background: var(--gold); }
-  .case-ledger .panel-kicker { color: rgb(10 10 10 / 62%); }
-  .case-ledger h4 { max-width: 8ch; margin: 0 0 1.25rem; font: 400 clamp(2.6rem, 4vw, 4.6rem)/.88 var(--font-display); letter-spacing: -.055em; }
-  .case-ledger > p { max-width: 36rem; margin: 0 0 2rem; font-size: .76rem; line-height: 1.7; }
-  .case-ledger dl { margin: 0; border-top: 1px solid rgb(10 10 10 / 28%); }
-  .case-ledger dl > div { padding: .7rem 0; display: grid; grid-template-columns: .8fr 1.2fr; gap: 1rem; border-bottom: 1px solid rgb(10 10 10 / 20%); }
-  .case-ledger dt { font-size: .52rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
-  .case-ledger dd { margin: 0; font-size: .66rem; }
-  .case-footer { padding: 2rem 0; border-bottom: 1px solid var(--line); }
-  .case-footer dl { margin: 0; display: grid; grid-template-columns: repeat(3, 1fr); }
-  .case-footer dl > div { display: grid; gap: .45rem; }
-  .case-footer dt { color: var(--faint); font-size: .55rem; letter-spacing: .13em; text-transform: uppercase; }
-  .case-footer dd { margin: 0; font-size: .75rem; }
+
+  .blueprint-ledger { display: grid; grid-template-columns: 1fr 1.5fr 1fr 1fr; border: 1px solid var(--line); background: transparent; }
+  .blueprint-col { padding: 2.5rem 2rem; border-right: 1px solid var(--line); display: flex; flex-direction: column; }
+  .blueprint-col:last-child { border-right: 0; }
+  
+  .blueprint-label { color: var(--gold); font-size: .55rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 1.25rem; }
+  .blueprint-title h3 { margin: 0; font: 400 clamp(2.4rem, 4vw, 3.2rem)/.9 var(--font-display); letter-spacing: -.045em; }
+  
+  .blueprint-narrative h4 { margin: 0 0 1.25rem; font: 400 clamp(1.8rem, 2.5vw, 2.4rem)/1.1 var(--font-display); letter-spacing: -.03em; color: var(--paper); }
+  .blueprint-narrative p { margin: 0; color: var(--muted); font-size: .85rem; line-height: 1.65; max-width: 38ch; }
+  
+  .blueprint-col dl { margin: 0; display: grid; gap: 1.4rem; }
+  .blueprint-col dl > div { display: grid; gap: .45rem; }
+  .blueprint-col dt { color: var(--faint); font-size: .52rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 600; }
+  .blueprint-col dd { margin: 0; font-size: .75rem; color: var(--paper); }
+
+  @media (max-width: 64rem) {
+    .blueprint-ledger { grid-template-columns: 1fr 1fr; }
+    .blueprint-col:nth-child(2) { border-right: 0; }
+    .blueprint-col:nth-child(1), .blueprint-col:nth-child(2) { border-bottom: 1px solid var(--line); }
+  }
+  @media (max-width: 48rem) {
+    .blueprint-ledger { grid-template-columns: 1fr; }
+    .blueprint-col { border-right: 0; border-bottom: 1px solid var(--line); padding: 2rem 1.25rem; }
+    .blueprint-col:last-child { border-bottom: 0; }
+  }
 
   .atmospheric-wrapper { position: relative; width: 100%; overflow: visible; }
   .atmospheric-wrapper > section { position: relative; z-index: 1; }
