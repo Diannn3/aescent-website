@@ -126,8 +126,22 @@ const process = [
 	<section id="capabilities" class="capabilities" aria-labelledby="capabilities-title">
 		<div class="marquee" aria-hidden="true">
 			<div class="marquee-track">
-				<span>Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i></span>
-				<span>Structure <i>♦</i> Restraint <i>♦</i> Character <i>♦</i></span>
+				<div class="marquee-group">
+					<span>Strategy <i>♦</i></span>
+					<span>Structure <i>♦</i></span>
+					<span>Restraint <i>♦</i></span>
+					<span>Clarity <i>♦</i></span>
+					<span>Trust <i>♦</i></span>
+					<span>Conversion <i>♦</i></span>
+				</div>
+				<div class="marquee-group">
+					<span>Strategy <i>♦</i></span>
+					<span>Structure <i>♦</i></span>
+					<span>Restraint <i>♦</i></span>
+					<span>Clarity <i>♦</i></span>
+					<span>Trust <i>♦</i></span>
+					<span>Conversion <i>♦</i></span>
+				</div>
 			</div>
 		</div>
         <div class="capabilities-inner section-shell">
@@ -172,29 +186,6 @@ const process = [
         <a href="#estimator" data-reveal>Estimate Your Project <span aria-hidden="true">↓</span></a>
       </section>
 
-      <footer class="site-footer">
-        <div class="footer-lead">
-          <span class="footer-index">A / 2026</span>
-          <p>Digital craftsmanship,<br /><em>deliberately built.</em></p>
-        </div>
-        <div class="footer-meta">
-          <div>
-            <span>Studio</span>
-            <a href="#philosophy">Philosophy</a>
-            <a href="#work">Selected Work</a>
-            <a href="#estimator">Project Estimator</a>
-          </div>
-          <div>
-            <span>Contact</span>
-            <a href="mailto:dian.aescentweb@gmail.com">dian.aescentweb@gmail.com</a>
-            <p>Laguna<br />Philippines</p>
-          </div>
-        </div>
-        <div class="footer-bottom">
-          <span>© {new Date().getFullYear()} Aescent Web Studio</span>
-          <span>Independent Design &amp; Development Studio</span>
-        </div>
-      </footer>
     </div>
   </main>
   <ChapterRail />
@@ -211,7 +202,7 @@ const process = [
   .hero-grid { position: relative; z-index: 2; width: min(100%, var(--max-width)); height: 100%; margin-inline: auto; display: grid; grid-template-columns: minmax(0, .9fr) minmax(25rem, 1.1fr); align-items: center; pointer-events: none; }
   .hero-copy { position: relative; z-index: 2; pointer-events: auto; }
   .hero-copy h1 { margin: 2rem 0 3rem; font: 500 clamp(4.2rem, 6.55vw, 8.2rem)/.8 var(--font-display); letter-spacing: -.075em; }
-  .reveal-line { display: block; overflow: hidden; padding: .25em .08em .45em 0; margin-top: -.17em; margin-bottom: -.37em; }
+  .reveal-line { display: block; overflow: hidden; padding: .25em .08em .62em 0; margin-top: -.17em; margin-bottom: -.39em; }
   .reveal-line > span { display: block; transform-origin: left bottom; }
   .hero-copy .serif-line { padding-bottom: .18em; font-family: var(--font-display); font-weight: 300; font-style: normal; letter-spacing: -.055em; }
   .hero-note { max-width: 42rem; display: grid; grid-template-columns: 1fr 2fr; gap: 2rem; }
@@ -292,7 +283,8 @@ const process = [
   .capabilities { overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: transparent; }
 	.marquee { width: 100%; overflow: hidden; padding: 1.5rem 0; border-bottom: 1px solid var(--line); color: var(--muted); font: 400 2rem var(--font-display); letter-spacing: -.03em; white-space: nowrap; }
 	.marquee-track { display: flex; width: max-content; animation: marquee 26s linear infinite; }
-	.marquee-track span { display: inline-flex; align-items: center; flex: none; padding-right: 3rem; }
+	.marquee-group { display: flex; flex: none; min-width: 100vw; justify-content: space-around; }
+	.marquee-group span { display: inline-flex; align-items: center; flex: none; padding-right: 3rem; }
 	.marquee i { margin: 0 1.5rem; color: var(--gold); font-size: .8rem; font-style: normal; }
   @keyframes marquee { to { transform: translateX(-50%); } }
   .capabilities-inner { padding: 10rem 0; display: grid; grid-template-columns: 1fr 1.65fr; gap: 7rem; }
