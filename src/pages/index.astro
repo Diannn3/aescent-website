@@ -186,6 +186,14 @@ const process = [
         <a href="#estimator" data-reveal>Estimate Your Project <span aria-hidden="true">↓</span></a>
       </section>
 
+      <nav class="legal-nav" aria-label="Legal pages">
+        <span>© 2026 Aescent Web Studio</span>
+        <div>
+          <a href="/privacy">Privacy Notice</a>
+          <a href="/terms">Terms of Use</a>
+        </div>
+      </nav>
+
     </div>
   </main>
   <ChapterRail />
@@ -318,6 +326,10 @@ const process = [
   .closing-orbit::before, .closing-orbit::after { content: ''; position: absolute; inset: 15%; border: 1px solid #1e1d1a; border-radius: 50%; }
   .closing-orbit::after { inset: 35%; }
   .closing-orbit i { position: absolute; top: 50%; left: 50%; width: .8rem; height: .8rem; background: var(--gold); transform: translate(-50%, -50%) rotate(45deg); }
+  .legal-nav { min-height: 6rem; padding: 1.5rem var(--page-pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); color: var(--faint); font-size: .58rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .legal-nav div { display: flex; gap: 2rem; }
+  .legal-nav a { min-height: 2.75rem; display: inline-flex; align-items: center; transition: color 180ms ease; }
+  .legal-nav a:hover { color: var(--gold); }
 
   @media (max-width: 64rem) {
     .hero-grid { grid-template-columns: 1.05fr .95fr; }
@@ -361,6 +373,7 @@ const process = [
     .closing { min-height: 48rem; padding-inline: 1.25rem; }
     .closing h2 { font-size: clamp(4.2rem, 20vw, 6.2rem); }
     .closing-orbit { width: 120vw; }
+    .legal-nav { padding-block: 2rem; align-items: flex-start; gap: 1.5rem; flex-direction: column; }
   }
 
   @media (prefers-reduced-motion: reduce) { .marquee div { animation: none; } }
