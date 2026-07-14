@@ -20,7 +20,7 @@ export const portfolioChapters: readonly PortfolioChapter[] = [
   { id: 'capabilities', number: '03', shortLabel: 'Capabilities', label: 'Studio Capabilities', headingId: 'capabilities-title' },
   { id: 'process', number: '04', shortLabel: 'Process', label: 'Design Process', headingId: 'process-title' },
   { id: 'estimator', number: '05', shortLabel: 'Estimate', label: 'Project Estimator', headingId: 'estimator-title' },
-  { id: 'contact', number: '06', shortLabel: 'Contact', label: 'Begin a Project', headingId: 'closing-title' },
+  { id: 'contact', number: '06', shortLabel: 'Begin', label: 'Begin a Project', headingId: 'closing-title' },
 ];
 
 export function clampProgress(scrollY: number, documentHeight: number, viewportHeight: number) {

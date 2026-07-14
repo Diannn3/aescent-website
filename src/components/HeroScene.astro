@@ -18,7 +18,6 @@ import AescentThreshold from './hero/AescentThreshold';
   <AescentThreshold client:only="react" />
   <div class="scene-grid" aria-hidden="true"></div>
   <span class="scene-label scene-label-top">Aescent / Threshold 01</span>
-  <span class="scene-label scene-label-bottom">Scroll to Enter</span>
 </div>
 
 <style>
@@ -31,14 +30,12 @@ import AescentThreshold from './hero/AescentThreshold';
   .scene-grid { position: absolute; inset: 0; pointer-events: none; opacity: .25; background-image: linear-gradient(rgb(212 175 55 / 9%) 1px, transparent 1px), linear-gradient(90deg, rgb(212 175 55 / 9%) 1px, transparent 1px); background-size: 6rem 6rem; mask-image: linear-gradient(90deg, transparent 0 38%, black 62% 100%); }
   .scene-label { position: absolute; z-index: 2; color: #77746c; font-size: .52rem; letter-spacing: .17em; text-transform: uppercase; pointer-events: none; }
   .scene-label-top { top: clamp(7.5rem, 14vh, 10rem); right: var(--page-pad); }
-  .scene-label-bottom { right: var(--page-pad); bottom: 2.3rem; }
 
   @media (max-width: 48rem) {
     .scene { position: relative; min-height: 31rem; }
     .scene-fallback :global(img) { width: min(80vw, 27rem); }
     .scene-grid { background-size: 4rem 4rem; mask-image: linear-gradient(transparent, black); }
     .scene-label-top { top: 1.5rem; }
-    .scene-label-bottom { bottom: 1.5rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
