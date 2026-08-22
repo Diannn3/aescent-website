@@ -21,7 +21,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toStri
     <meta name="color-scheme" content="dark" />
     <link rel="canonical" href={canonicalUrl} />
     <meta property="og:url" content={canonicalUrl} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/assets/aescent_logo_monogram.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
@@ -31,7 +31,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toStri
     <div class="site-loader" data-loading-screen role="status" aria-live="polite">
       <span class="sr-only">Loading Aescent Web Studio</span>
       <div class="loader-skeleton" aria-hidden="true">
-        <div class="loader-brand"><i></i><span>Aescent</span></div>
+        <div class="loader-brand"><img src="/assets/aescent_logo_monogram.png" alt="" class="loader-logo" /><span>Aescent</span></div>
         <div class="loader-rule"></div>
         <div class="loader-lines">
           <i></i><i></i><i></i>
@@ -43,7 +43,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toStri
 
     <header class="site-header" data-site-header>
       <a class="brand" href="#top" aria-label="Aescent Web Studio, home" translate="no">
-        <span class="brand-gem" aria-hidden="true"></span>
+        <img src="/assets/aescent_logo_monogram.png" alt="" class="brand-logo" aria-hidden="true" />
         <span>Aescent</span>
       </a>
 
@@ -132,7 +132,7 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toStri
   .site-loader.is-complete { visibility: hidden; opacity: 0; pointer-events: none; }
   .loader-skeleton { position: relative; width: min(100% - 2.5rem, 62rem); display: grid; gap: clamp(1.5rem, 4vw, 3rem); }
   .loader-brand { display: inline-flex; align-items: center; gap: .7rem; font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-  .loader-brand i { width: .5rem; height: .5rem; background: var(--gold); transform: rotate(45deg); }
+  .loader-logo { height: 1.15rem; width: auto; }
   .loader-rule { height: 1px; background: var(--line); }
   .loader-lines { display: grid; gap: .85rem; }
   .loader-lines i { display: block; height: clamp(2.5rem, 7vw, 6rem); background: linear-gradient(90deg, #171714 0%, #302d25 50%, #171714 100%); background-size: 200% 100%; animation: loader-sweep 1.2s linear infinite; }
@@ -176,8 +176,8 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url).toStri
   }
   .site-header.is-scrolled { border-color: rgb(212 175 55 / 28%); background: rgb(10 10 10 / 92%); }
   .brand { min-height: 2.75rem; display: inline-flex; align-items: center; gap: .75rem; font-size: .72rem; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-  .brand-gem { width: .48rem; height: .48rem; background: var(--gold); transform: rotate(45deg); transition: transform 240ms ease; }
-  .brand:hover .brand-gem { transform: rotate(135deg); }
+  .brand-logo { height: 1.5rem; width: auto; transition: opacity 240ms ease; }
+  .brand:hover .brand-logo { opacity: 0.8; }
   .site-nav { display: flex; align-items: center; gap: clamp(1.25rem, 2.6vw, 3rem); }
   .site-nav a { position: relative; min-height: 2.75rem; display: inline-flex; align-items: center; color: var(--muted); font-size: .66rem; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; transition: color 180ms ease; }
   .site-nav a:hover { color: var(--paper); }

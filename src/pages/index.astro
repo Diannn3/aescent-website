@@ -1,10 +1,36 @@
 ---
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import ChapterRail from '../components/ChapterRail.astro';
 import HeroScene from '../components/HeroScene.astro';
 import ProjectEstimator from '../components/ProjectEstimator.astro';
+import SelectedWorkGallery from '../components/work/SelectedWorkGallery';
 import Layout from '../layouts/Layout.astro';
-import lagunaSmilesPreview from '../assets/laguna-smiles-preview.png';
+import aescentSmilesPreview from '../assets/aescent-smiles-preview.png';
+import smorPreview from '../assets/smor-preview.png';
+import { selectedWorkRecords } from '../data/selectedWork';
+
+const selectedWorkSources = {
+  'aescent-smiles': aescentSmilesPreview,
+  smor: smorPreview,
+} as const;
+
+const selectedWorkProjects = await Promise.all(selectedWorkRecords.map(async (project) => {
+  const source = selectedWorkSources[project.imageKey];
+  const [media, ambientMedia] = await Promise.all([
+    getImage({ src: source, width: 1600, format: 'webp', quality: 88 }),
+    getImage({ src: source, width: 360, format: 'webp', quality: 48 }),
+  ]);
+
+  return {
+    ...project,
+    media: {
+      src: media.src,
+      width: 1600,
+      height: Math.round(1600 * source.height / source.width),
+    },
+    ambientMedia: { src: ambientMedia.src },
+  };
+}));
 
 const capabilities = [
   ['01', 'Strategy & Structure', 'Positioning, conversion architecture, and content hierarchy before visual decoration.'],
@@ -64,7 +90,7 @@ const process = [
           <span>01</span><i></i><span>Philosophy</span>
         </div>
         <div class="manifesto-content">
-          <span class="eyebrow" data-reveal>The Anti-Vibecode Manifesto</span>
+          <span class="eyebrow" data-reveal>The Aescent Standard</span>
           <h2 id="manifesto-title" data-reveal>
             The web has enough<br /><em>decoration.</em>
           </h2>
@@ -83,48 +109,7 @@ const process = [
           <span class="eyebrow">02 / Selected Work</span>
           <h2 id="work-title">One system.<br /><em>Every detail considered.</em></h2>
         </header>
-
-        <article class="case-study" data-reveal>
-          <div class="case-monolith" data-work-visual>
-            <div class="browser-bar" aria-hidden="true"><i></i><i></i><i></i><span>laguna-smiles.local</span></div>
-            <div class="case-window">
-              <Image
-                src={lagunaSmilesPreview}
-                alt="Laguna Smiles premium dental website concept"
-                width={1841}
-                height={923}
-                quality={90}
-                loading="lazy"
-                data-work-image
-              />
-            </div>
-          </div>
-          
-          <div class="blueprint-ledger">
-            <div class="blueprint-col blueprint-title">
-              <span class="blueprint-label">01 / Concept Study / Dental</span>
-              <h3>Laguna Smiles</h3>
-            </div>
-            <div class="blueprint-col blueprint-narrative">
-              <h4>Trust before treatment.</h4>
-              <p>A trust-first digital concept for a premium dental practice in Laguna, structured around patient confidence, clear services, and an effortless path to inquiry.</p>
-            </div>
-            <div class="blueprint-col">
-              <dl>
-                <div><dt>Focus</dt><dd>Trust &amp; Conversion</dd></div>
-                <div><dt>Market</dt><dd>Laguna, Philippines</dd></div>
-                <div><dt>Format</dt><dd>One-page Experience</dd></div>
-              </dl>
-            </div>
-            <div class="blueprint-col">
-              <dl>
-                <div><dt>Positioning</dt><dd>Premium, approachable</dd></div>
-                <div><dt>Hierarchy</dt><dd>Practice → services → inquiry</dd></div>
-                <div><dt>Visuals</dt><dd>Editorial serif / clinical neutral</dd></div>
-              </dl>
-            </div>
-          </div>
-        </article>
+        <SelectedWorkGallery client:visible projects={selectedWorkProjects} />
       </section>
 
 	<section id="capabilities" class="capabilities" aria-labelledby="capabilities-title">
@@ -183,7 +168,7 @@ const process = [
       <ProjectEstimator />
 
       <section id="contact" class="closing" aria-labelledby="closing-title">
-        <div class="closing-orbit" aria-hidden="true"><i></i></div>
+        <div class="closing-orbit" aria-hidden="true"></div>
         <span class="eyebrow" data-reveal>06 / Begin</span>
         <h2 id="closing-title" data-reveal>Build something<br /><em>worth remembering.</em></h2>
         <p data-reveal>If your business is ready for a more deliberate digital presence, start with the estimator or send the studio a direct brief.</p>
@@ -209,7 +194,7 @@ const process = [
   h2, h3, p { text-wrap: pretty; }
 
   .hero { position: relative; height: 200svh; border-bottom: 1px solid var(--line); background: #050505; }
-  .hero-sticky { position: sticky; top: 0; height: 100svh; padding: clamp(6.5rem, 12vh, 9rem) var(--page-pad) 2rem; display: flex; flex-direction: column; overflow: hidden; isolation: isolate; }
+  .hero-sticky { position: sticky; top: 0; height: 100svh; padding: clamp(9.5rem, 16vh, 12rem) var(--page-pad) 2rem; display: flex; flex-direction: column; overflow: hidden; isolation: isolate; }
   .hero-sticky::after { content: ''; position: absolute; z-index: 1; inset: 0; pointer-events: none; background: linear-gradient(90deg, rgb(5 5 5 / 99%) 0%, rgb(5 5 5 / 95%) 37%, rgb(5 5 5 / 48%) 53%, transparent 72%); }
   .hero-grid { position: relative; z-index: 2; width: min(100%, var(--max-width)); height: 100%; margin-inline: auto; display: grid; grid-template-columns: minmax(0, .9fr) minmax(25rem, 1.1fr); align-items: center; pointer-events: none; }
   .hero-copy { position: relative; z-index: 2; pointer-events: auto; }
@@ -240,43 +225,10 @@ const process = [
   .manifesto-body { max-width: 48rem; margin-left: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
   .manifesto-body p { margin: 0; color: var(--muted); font-size: .92rem; line-height: 1.8; }
 
-  .work { padding: 6rem 0 8rem; }
-  .section-heading { margin-bottom: 7rem; display: grid; grid-template-columns: 1fr 2.4fr; gap: 2rem; }
-  .section-heading h2 { grid-column: 2; max-width: 12ch; margin: 0; font: 400 clamp(4.2rem, 8vw, 8.5rem)/.84 var(--font-display); letter-spacing: -.065em; }
+  .work { padding: 7rem 0 8rem; }
+  .section-heading { margin-bottom: 4.5rem; display: block; }
+  .section-heading h2 { max-width: 12ch; margin: 1.5rem 0 0; font: 400 clamp(4.2rem, 8vw, 8.5rem)/.84 var(--font-display); letter-spacing: -.065em; }
   .section-heading h2 em { color: var(--muted); font-weight: 400; }
-  .case-study { border-top: 1px solid var(--line); }
-  .case-monolith { width: min(100%, 72rem); margin: 2rem auto 0; border: 1px solid var(--line); border-bottom: 0; background: #000; overflow: hidden; }
-  .case-window { aspect-ratio: 1841 / 923; overflow: hidden; }
-  .case-window :global(img) { width: 100%; height: 100%; object-fit: contain; }
-  .browser-bar { height: 2.5rem; padding: 0 1rem; display: flex; align-items: center; gap: .45rem; border-bottom: 1px solid #292927; color: #686660; font-size: .55rem; letter-spacing: .12em; background: #000; }
-  .browser-bar i { width: .38rem; height: .38rem; border-radius: 50%; background: #34332f; }
-  .browser-bar span { margin-left: auto; }
-
-  .blueprint-ledger { width: min(100%, 72rem); margin-inline: auto; display: grid; grid-template-columns: 1fr 1.5fr 1fr 1fr; border: 1px solid var(--line); background: transparent; }
-  .blueprint-col { padding: 2.5rem 2rem; border-right: 1px solid var(--line); display: flex; flex-direction: column; }
-  .blueprint-col:last-child { border-right: 0; }
-  
-  .blueprint-label { color: var(--gold); font-size: .55rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 1.25rem; }
-  .blueprint-title h3 { margin: 0; font: 400 clamp(2.4rem, 4vw, 3.2rem)/.9 var(--font-display); letter-spacing: -.045em; }
-  
-  .blueprint-narrative h4 { margin: 0 0 1.25rem; font: 400 clamp(1.8rem, 2.5vw, 2.4rem)/1.1 var(--font-display); letter-spacing: -.03em; color: var(--paper); }
-  .blueprint-narrative p { margin: 0; color: var(--muted); font-size: .85rem; line-height: 1.65; max-width: 38ch; }
-  
-  .blueprint-col dl { margin: 0; display: grid; gap: 1.4rem; }
-  .blueprint-col dl > div { display: grid; gap: .45rem; }
-  .blueprint-col dt { color: var(--faint); font-size: .52rem; letter-spacing: .13em; text-transform: uppercase; font-weight: 600; }
-  .blueprint-col dd { margin: 0; font-size: .75rem; color: var(--paper); }
-
-  @media (max-width: 64rem) {
-    .blueprint-ledger { grid-template-columns: 1fr 1fr; }
-    .blueprint-col:nth-child(2) { border-right: 0; }
-    .blueprint-col:nth-child(1), .blueprint-col:nth-child(2) { border-bottom: 1px solid var(--line); }
-  }
-  @media (max-width: 48rem) {
-    .blueprint-ledger { grid-template-columns: 1fr; }
-    .blueprint-col { border-right: 0; border-bottom: 1px solid var(--line); padding: 2rem 1.25rem; }
-    .blueprint-col:last-child { border-bottom: 0; }
-  }
 
   .atmospheric-wrapper { position: relative; width: 100%; overflow: visible; }
   .atmospheric-wrapper > section { position: relative; z-index: 1; }
@@ -327,7 +279,7 @@ const process = [
   .process-steps p { grid-column: 2; max-width: 32rem; margin: 2rem 0 0; color: var(--muted); font-size: .85rem; line-height: 1.75; }
 
   .closing { position: relative; min-height: 100svh; padding: 9rem var(--page-pad); display: flex; align-items: center; justify-content: center; flex-direction: column; overflow: hidden; border-top: 1px solid var(--line); text-align: center; }
-  .closing h2 { position: relative; z-index: 2; margin: 2rem 0; font: 400 clamp(4.6rem, 10vw, 11rem)/.8 var(--font-display); letter-spacing: -.07em; }
+  .closing h2 { position: relative; z-index: 2; margin: 2rem 0 2.5rem; font: 400 clamp(4.6rem, 10vw, 11rem)/.95 var(--font-display); letter-spacing: -.07em; }
   .closing h2 em { color: var(--gold); font-weight: 400; }
   .closing > p { position: relative; z-index: 2; max-width: 38rem; margin: 0 0 3rem; color: var(--muted); line-height: 1.75; }
   .closing > a { position: relative; z-index: 2; min-height: 3.5rem; padding: 0 1.4rem; display: inline-flex; align-items: center; gap: 3rem; border: 1px solid var(--gold); font-size: .68rem; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; transition: color 180ms ease, background-color 180ms ease; }
@@ -335,9 +287,9 @@ const process = [
   .closing-orbit { position: absolute; width: min(62vw, 56rem); aspect-ratio: 1; border: 1px solid #27251f; border-radius: 50%; }
   .closing-orbit::before, .closing-orbit::after { content: ''; position: absolute; inset: 15%; border: 1px solid #1e1d1a; border-radius: 50%; }
   .closing-orbit::after { inset: 35%; }
-  .closing-orbit i { position: absolute; top: 50%; left: 50%; width: .8rem; height: .8rem; background: var(--gold); transform: translate(-50%, -50%) rotate(45deg); }
-  .legal-nav { min-height: 6rem; padding: 1.5rem var(--page-pad); display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--line); color: var(--faint); font-size: .58rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
-  .legal-nav div { display: flex; gap: 2rem; }
+  .legal-nav { min-height: 6rem; padding: 1.5rem var(--page-pad); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; border-top: 1px solid var(--line); color: var(--faint); font-size: .58rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+  .legal-nav span { grid-column: 1; }
+  .legal-nav div { grid-column: 2; display: flex; gap: 2rem; justify-content: center; }
   .legal-nav a { min-height: 2.75rem; display: inline-flex; align-items: center; transition: color 180ms ease; }
   .legal-nav a:hover { color: var(--gold); }
 
@@ -371,16 +323,9 @@ const process = [
     .manifesto-content > h2 { margin-bottom: 6rem; font-size: clamp(4rem, 18vw, 6rem); }
     .manifesto-statement { margin-bottom: 5rem; font-size: clamp(3rem, 13vw, 4.5rem); }
     .manifesto-body { grid-template-columns: 1fr; gap: 2rem; }
-    .work { padding: 8rem 0; }
+    .work { padding: 7rem 0; }
     .section-heading { display: block; margin-bottom: 4rem; }
-    .section-heading h2 { margin-top: 2rem; font-size: clamp(3.8rem, 16vw, 5.5rem); }
-    .case-meta { grid-template-columns: .2fr 1fr; }
-    .case-meta > p { grid-column: 2; }
-    .case-triptych { min-height: 0; padding: 1rem; grid-template-columns: 1fr; grid-template-rows: auto; }
-    .case-panel-primary { grid-row: auto; }
-    .case-panel-detail { min-height: 24rem; }
-    .case-ledger { min-height: 31rem; }
-    .case-footer dl { grid-template-columns: 1fr; gap: 1.5rem; }
+    .section-heading h2 { max-width: 100%; margin-top: 1.5rem; font-size: clamp(3rem, 13vw, 4.5rem); line-height: .88; }
     .capabilities-inner, .process { padding: 8rem 0; display: block; }
     .capabilities-inner header, .process-heading { position: relative; top: auto; margin-bottom: 5rem; }
     .capability-list article { grid-template-columns: .2fr 1fr; }
@@ -389,7 +334,7 @@ const process = [
     .closing { min-height: 48rem; padding-inline: 1.25rem; }
     .closing h2 { font-size: clamp(4.2rem, 20vw, 6.2rem); }
     .closing-orbit { width: 120vw; }
-    .legal-nav { padding-block: 2rem; align-items: flex-start; gap: 1.5rem; flex-direction: column; }
+    .legal-nav { padding-block: 2rem; align-items: flex-start; gap: 1.5rem; flex-direction: column; display: flex; }
   }
 
   @media (prefers-reduced-motion: reduce) { .marquee div { animation: none; } }
